@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Anatomy of an Indian Contract</title>
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The infographic is structured as a narrative scrollable page. It begins with a high-level "Anatomy of a Contract" diagram to orient the user to the main clause categories. This is followed by a bar chart visualizing the 'Clause Distribution' to give a quantitative sense of the library. A 'Dispute Lifecycle' flowchart then illustrates the practical application of key clauses in a conflict scenario. Finally, an interactive 'Clause Deep Dive' section uses an accordion UI, allowing users to explore the detailed content of each of the 50 clauses without being overwhelmed. This top-down structure—from holistic view to granular detail—is chosen to make the dense legal information digestible and engaging for a professional audience. -->
+    <!-- Visualization & Content Choices: 1. Contract Anatomy -> Goal: Organize -> Viz: HTML/CSS Diagram -> Justification: A hub-and-spoke diagram is the clearest way to show the core categories that form a contract. 2. Clause Count -> Goal: Compare -> Viz: Bar Chart (Chart.js) -> Justification: A bar chart provides an immediate quantitative comparison of the volume of clauses in each category. 3. Dispute Lifecycle -> Goal: Organize (Process) -> Viz: HTML/CSS Flowchart -> Justification: A flowchart is the standard and most intuitive way to represent a sequential process. 4. Clause Details -> Goal: Inform -> Presentation: Interactive Accordion (HTML/JS) -> Justification: An accordion is ideal for presenting large amounts of structured text on a single page without excessive scrolling, allowing users to self-select the information they need. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); border: 1px solid #e2e8f0; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
+        .clause-preset { background-color: #f1f5f9; border: 1px solid #cbd5e1; white-space: pre-wrap; word-wrap: break-word; line-height: 1.6; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-[#003F5C]">The Anatomy of an Indian Contract</h1>
+            <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">A visual guide to the essential clauses that form a robust legal agreement. This infographic breaks down the structure of a contract, showing how different components work together to define relationships, manage risk, and ensure enforceability.</p>
+        </header>
+        
+        <section id="anatomy" class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8 text-[#003F5C]">1. Core Components of a Contract</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">A well-drafted contract is built upon several distinct categories of clauses, each serving a specific purpose. Together, they create a comprehensive legal framework for the business relationship.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+                <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36">
+                    <span class="text-3xl mb-2">📄</span>
+                    <h3 class="font-semibold text-[#58508D]">General</h3>
+                    <p class="text-xs text-slate-500">Foundation & Framework</p>
+                </div>
+                <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36">
+                    <span class="text-3xl mb-2">⚙️</span>
+                    <h3 class="font-semibold text-[#58508D]">Operational</h3>
+                    <p class="text-xs text-slate-500">Day-to-Day Execution</p>
+                </div>
+                <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36">
+                    <span class="text-3xl mb-2">🛡️</span>
+                    <h3 class="font-semibold text-[#58508D]">Risk & Liability</h3>
+                    <p class="text-xs text-slate-500">Allocating Responsibility</p>
+                </div>
+                <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36">
+                    <span class="text-3xl mb-2">💡</span>
+                    <h3 class="font-semibold text-[#58508D]">Confidentiality & IP</h3>
+                    <p class="text-xs text-slate-500">Protecting Intangibles</p>
+                </div>
+                <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36">
+                     <span class="text-3xl mb-2">⚖️</span>
+                    <h3 class="font-semibold text-[#BC5090]">Termination & Dispute</h3>
+                    <p class="text-xs text-slate-500">Exit & Disagreements</p>
+                </div>
+                 <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36">
+                    <span class="text-3xl mb-2">🔧</span>
+                    <h3 class="font-semibold text-[#BC5090]">Contract-Specific</h3>
+                    <p class="text-xs text-slate-500">Tailored Provisions</p>
+                </div>
+                <div class="card p-4 flex flex-col justify-center items-center h-32 md:h-36 col-span-2 md:col-span-1">
+                    <span class="text-3xl mb-2">🔩</span>
+                    <h3 class="font-semibold text-[#BC5090]">Boilerplate</h3>
+                     <p class="text-xs text-slate-500">Standard Administration</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="distribution" class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8 text-[#003F5C]">2. Clause Distribution by Category</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Not all parts of a contract are equal in volume. This chart shows the number of essential clauses within each core component, highlighting the areas that typically require the most detail and legal precision.</p>
+            <div class="card p-6">
+                <div class="chart-container">
+                    <canvas id="clauseDistributionChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="dispute-lifecycle" class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8 text-[#003F5C]">3. The Lifecycle of a Dispute</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">When disagreements arise, specific clauses dictate the path to resolution. This flowchart illustrates the typical process governed by the contract, from initial negotiation to final arbitration.</p>
+            <div class="space-y-4">
+                <div class="card p-4 text-center">
+                    <p class="font-semibold text-[#FF6361]">Dispute Arises</p>
+                    <p class="text-sm text-slate-500">A conflict or disagreement occurs between parties.</p>
+                </div>
+                <div class="flex justify-center text-2xl text-slate-400">↓</div>
+                <div class="card p-4 text-center">
+                    <p class="font-semibold text-[#FFA600]">Clause 33: Dispute Resolution (Negotiation)</p>
+                    <p class="text-sm text-slate-500">Senior management attempts to resolve the issue amicably.</p>
+                </div>
+                <div class="flex justify-center text-2xl text-slate-400">↓</div>
+                <div class="card p-4 text-center">
+                     <p class="font-semibold text-[#FFA600]">Clause 33: Dispute Resolution (Arbitration)</p>
+                    <p class="text-sm text-slate-500">If negotiation fails, the dispute is referred to a formal, binding arbitration process.</p>
+                </div>
+                 <div class="flex justify-center text-2xl text-slate-400">↓</div>
+                <div class="card p-4 text-center">
+                    <p class="font-semibold text-[#FFA600]">Clause 34: Governing Law & Jurisdiction</p>
+                    <p class="text-sm text-slate-500">The entire process is governed by the laws of India and subject to the courts of the specified jurisdiction.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="deep-dive">
+            <h2 class="text-2xl font-bold text-center mb-8 text-[#003F5C]">4. Clause Library Deep Dive</h2>
+             <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Explore the full library of 50 clauses. Click on any category below to expand it and view the details for each clause, including its objective, preset legal language, and key drafting considerations.</p>
+            <div id="accordion-container" class="space-y-4"></div>
+        </section>
+
+    </div>
+
+    <script>
+        const clauseLibrary = [
+            {
+                category: "Part I: General Clauses",
+                color: "#58508D",
+                clauses: [
+                    { id: 1, title: "Parties & Recitals", objective: "To accurately identify the contracting parties and provide the business context for the agreement.", preset: `This [TYPE OF AGREEMENT] (the “Agreement”) is entered into on this [Date] day of [Month], [Year] (“Execution Date”),\n\nBY AND BETWEEN:\n\n[PARTY A NAME], a company incorporated under the Companies Act, [1956/2013], having its registered office at [Registered Office Address] and Corporate Identity Number (CIN): [CIN] (hereinafter referred to as the “**[Defined Term for Party A]**”, which expression shall, unless repugnant to the context or meaning thereof, be deemed to mean and include its successors, administrators, and permitted assigns) of the FIRST PART;\n\nAND\n\n[PARTY B NAME]...\n\n(Party A and Party B shall hereinafter be collectively referred to as the “**Parties**” and individually as a “**Party**”.)\n\nWHEREAS:\nA. Party A is engaged in the business of [Detailed description of Party A's business and expertise].\nB. Party B is a reputable entity engaged in providing [Detailed description of Party B's business and expertise].\nC. Relying on Party B's representations and expertise, Party A desires to engage Party B to [State the primary objective of the contract]...\n\nNOW, THEREFORE, IN CONSIDERATION OF THE MUTUAL PROMISES...`, considerations: "Use the exact legal names and addresses. The recitals (\"WHEREAS\" clauses) should narrate the background leading to the contract and can be used by courts to interpret the parties' intent." },
+                    { id: 2, title: "Definitions & Interpretations", objective: "To define key terms to prevent ambiguity.", preset: `1. DEFINITIONS:\nIn this Agreement, unless the context otherwise requires, the following capitalized terms shall have the meanings ascribed to them below:\n\n“Affiliate” means...\n“Applicable Law” means...\n“Business Day” means...\n\n2. INTERPRETATION:\n(a) The headings...`, considerations: "Arrange definitions alphabetically. Define terms that have a specific, technical, or repeated meaning within the contract." },
+                    { id: 3, title: "Conditions Precedent", objective: "To specify conditions that must be fulfilled before the agreement... becomes legally binding.", preset: `The rights and obligations of the Parties under this Agreement... shall be conditional upon... the satisfaction of the following conditions precedent (“Conditions Precedent”) on or before [Date]:\n(a) Receipt of all necessary corporate authorisations...\n(b) The Client having obtained the necessary regulatory approval...\n(c) The Service Provider furnishing a performance bank guarantee...`, considerations: "Clearly list each condition. Specify a \"long-stop date\" by which they must be met and the consequences of failure (e.g., termination)." },
+                    { id: 4, title: "Term & Duration", objective: "To specify the length of time the agreement is effective.", preset: `This Agreement shall be deemed to have commenced on [Start Date]... and shall continue... for an initial period of [Number] [Months/Years] (the “Initial Term”)... Upon the expiry of the Initial Term, this Agreement shall automatically renew...`, considerations: "Clearly distinguish between the date of signing and the \"Effective Date\". The auto-renewal clause requires careful tracking." },
+                    { id: 5, title: "Scope of Work/Services", objective: "To precisely describe the services or goods to be provided.", preset: `The Service Provider shall... provide the services as more particularly described in **Schedule A** (the “Services”). The Service Provider agrees to perform the Services:\n(a) with a high degree of professionalism...\n(b) in accordance with the highest industry standards...\n\nAny material change to the Scope of Work shall be... a formal Change Order Request...`, considerations: "For anything complex, always use a schedule/annexure. Clearly state what is included and excluded to avoid scope creep." },
+                    { id: 6, title: "Consideration/Payment Terms", objective: "To detail the payment amount, schedule, and method.", preset: `(a) ...the Client shall pay the Service Provider the fees as set out in **Schedule C** (“Fees”).\n(b) The Service Provider shall submit a detailed and accurate invoice...\n(c) The Client shall pay all undisputed amounts on each invoice within [Number] days... subject to the deduction of applicable taxes at source (TDS)...\n(e) The Fees are exclusive of Goods and Services Tax (GST)...`, considerations: "Specify currency, invoicing cycle, due dates, and tax responsibilities. Include a process for invoice disputes." },
+                    { id: 7, title: "Set-Off", objective: "To grant a party the right to deduct any amount owed to it...", preset: `The Client shall have the right to set-off or deduct any amount that is owed by the Service Provider to the Client... from any payments due from the Client to the Service Provider...`, considerations: "This is a client-friendly clause. A service provider will often try to resist or limit this clause." },
+                    { id: 8, title: "Time is of the Essence", objective: "To make it clear that performance deadlines are strict and that any delay constitutes a material breach.", preset: `The Parties agree that with respect to the performance of all obligations and the achievement of all milestones... time is of the essence. Any delay... shall be considered a material breach...`, considerations: "This clause significantly strengthens the position of the party awaiting performance under the Indian Contract Act, 1872." },
+                    { id: 9, title: "Deliverables & Milestones", objective: "To outline specific outputs and timelines for the project.", preset: `The Service Provider shall provide the deliverables... and achieve the milestones... in accordance with the timeline... set out in **Schedule B**.\n(a) **Acceptance Testing:** Each Deliverable shall be subject to review and acceptance by the Client...\n(c) **Rectification:** If a Deliverable is rejected, the Service Provider shall have [Number] Business Days to rectify...`, considerations: "Clearly define what constitutes a \"Deliverable\" and the objective criteria for its \"acceptance\" to avoid payment disputes." }
+                ]
+            },
+            {
+                category: "Part II: Operational Clauses",
+                color: "#58508D",
+                clauses: [
+                    { id: 10, title: "Subcontracting / Assignment", objective: "To control whether a party can transfer its rights or duties to a third party.", preset: `Neither Party shall assign, transfer, or subcontract any of its rights or obligations... without the prior express written consent of the other Party...`, considerations: "A client may allow subcontracting to specific, pre-approved vendors." },
+                    { id: 11, title: "Audit Rights", objective: "To give a party the right to inspect the other's records to ensure compliance.", preset: `The Client... shall have the right... to audit and inspect the Service Provider's records, documents, and premises... Such audit shall be conducted during normal business hours, no more than once per calendar year...`, considerations: "Limit the frequency of audits and ensure confidentiality obligations apply to the auditors." },
+                    { id: 12, title: "Relationship of Parties", objective: "To explicitly define the legal relationship as independent contractors.", preset: `The relationship between the Parties is solely that of independent contractors. Nothing in this Agreement shall be construed to create a partnership, joint venture, agency... or employment relationship...`, considerations: "This is a critical clause in service agreements to mitigate risks under Indian labour laws." },
+                    { id: 13, title: "Key Personnel", objective: "To ensure specific, named individuals are assigned to the project.", preset: `The Service Provider agrees that the individuals listed in **Schedule D** (“Key Personnel”) shall be assigned... The Service Provider shall not remove or reassign any of the Key Personnel without the prior written consent of the Client...`, considerations: "Used when the client is relying on the specific expertise of certain individuals." },
+                    { id: 14, title: "Data Protection", objective: "To ensure compliance with applicable data privacy laws, like the DPDP Act.", preset: `(a) The Service Provider... agrees to comply with all applicable data protection laws, including the Digital Personal Data Protection Act, 2023.\n(b) The Service Provider shall: (i) only process personal data in accordance with the Client's lawful instructions...`, considerations: "This is now a mandatory clause for most commercial contracts involving data." },
+                    { id: 15, title: "Compliance with Laws", objective: "To ensure both parties agree to follow all relevant laws.", preset: `Each Party shall... comply with all Applicable Laws... including... any applicable anti-corruption laws, including the Prevention of Corruption Act, 1988.`, considerations: "Can be expanded to include specific legislation relevant to the industry." },
+                    { id: 16, title: "Regulatory Approvals", objective: "To assign responsibility for obtaining necessary government permissions.", preset: `The Service Provider shall be solely responsible for obtaining and maintaining... all necessary licenses, permits, consents, and approvals...`, considerations: "Specify which party bears the cost and the consequences of failure to obtain them." },
+                    { id: 17, title: "Health, Safety, and Environment (HSE)", objective: "To mandate compliance with HSE standards.", preset: `The Service Provider shall comply strictly with all applicable health, safety, and environmental laws... as well as the Client's own HSE policies...`, considerations: "The Client may require the Service Provider to provide evidence of HSE training or certifications." },
+                    { id: 18, title: "Publicity", objective: "To control how parties can publicly announce their business relationship.", preset: `Neither Party shall issue any press release... or use the other Party's name, trademarks, or logos... without the prior written consent of the other Party.`, considerations: "Important for managing brand reputation. A compromise for general client lists is common." }
+                ]
+            },
+            {
+                category: "Part III: Risk & Liability Clauses",
+                color: "#BC5090",
+                clauses: [
+                    { id: 19, title: "Indemnity", objective: "To require one party to compensate the other for specific losses.", preset: `The Service Provider... shall indemnify, defend, and hold harmless the Client... from and against any and all third-party claims, losses, damages... arising out of...\n(c) any claim that the Services or Work Product infringe upon the intellectual property rights of any third party.`, considerations: "Can be mutual or one-way. Should specify the procedure for making a claim." },
+                    { id: 20, title: "Limitation of Liability", objective: "To place a cap on the total financial liability of a party.", preset: `(a) **Liability Cap:** ...the total aggregate liability... shall be limited to the total Fees actually paid... in the twelve (12) months immediately preceding the... claim.\n(b) **Exclusion of Consequential Loss:** Under no circumstances shall either Party be liable... for any indirect... or consequential... damages...`, considerations: "A heavily negotiated clause. The carve-outs (exceptions) are critical." },
+                    { id: 21, title: "Warranties & Representations", objective: "To establish a set of facts and promises upon which the parties are relying.", preset: `(a) **Mutual Warranties:** Each Party represents and warrants... (ii) it has the full corporate power and authority to enter into... this Agreement...\n(b) **Service Provider Warranties:** The Service Provider further represents and warrants... (ii) the Services will be performed in accordance with the highest industry standards...`, considerations: "Warranties can be very specific. The disclaimer of implied warranties is an important protection." },
+                    { id: 22, title: "Force Majeure", objective: "To excuse a party from performance if an uncontrollable external event occurs.", preset: `Neither Party shall be liable for any failure or delay... due to a Force Majeure Event... including acts of God, war, terrorism... epidemics, pandemics... If a Force Majeure Event prevents performance for... more than sixty (60) days, the non-affected Party may terminate...`, considerations: "The list of events, duties to notify and mitigate, and the right to terminate are crucial." },
+                    { id: 23, title: "Insurance", objective: "To require parties to maintain certain insurance coverage.", preset: `...the Service Provider shall... procure and maintain... (a) Commercial General Liability insurance... (b) Professional Indemnity... insurance... (c) Cyber Liability insurance... The... policies shall name the Client as an additional insured...`, considerations: "Specify minimum coverage amounts. 'Additional insured' status is a key protection." },
+                    { id: 24, title: "Liquidated Damages", objective: "To pre-agree on damages for a specific breach, typically delays.", preset: `...should the Service Provider fail to achieve a critical milestone... the Service Provider shall be liable to pay... liquidated damages... equivalent to one percent (1%) of the value of that milestone for each complete week of delay.\n(d) **Acknowledgement:** The Parties acknowledge... this sum represents a genuine and reasonable pre-estimate of the losses...`, considerations: "Under Indian law, the amount must be a reasonable estimate of potential loss, not a 'penalty'." }
+                ]
+            },
+            {
+                category: "Part IV: Confidentiality & IP Clauses",
+                color: "#FF6361",
+                clauses: [
+                    { id: 25, title: "Confidentiality", objective: "To protect sensitive information shared between the parties.", preset: `(a) **Definition:** “Confidential Information” means any and all information... designated as confidential or that reasonably should be understood to be confidential...\n(b) **Obligations:** The Receiving Party shall... (ii) maintain the Confidential Information in strict confidence...\n(d) **Injunctive Relief:** ...the Disclosing Party shall be entitled to seek immediate injunctive relief.`, considerations: "Define 'Confidential Information' broadly. The right to injunctive relief is an important enforcement tool." },
+                    { id: 26, title: "Moral Rights Waiver", objective: "To ensure the creator of a work waives rights like the right of attribution.", preset: `In accordance with Section 57 of the Copyright Act, 1957... the Service Provider... hereby irrevocably and unconditionally waives any and all moral rights... that they may have in the Work Product.`, considerations: "Crucial for clients who want complete and unrestricted control over commissioned works." },
+                    { id: 27, title: "Non-Compete / Non-Solicit", objective: "To restrict a party from poaching employees/clients.", preset: `(a) **Non-Solicitation of Employees:** During the Term... and for... twelve (12) months thereafter, each Party agrees not to... solicit... any employee of the other Party...\n(b) **Non-Solicitation of Clients:** ...the Service Provider agrees not to... solicit... any client of the Client...`, considerations: "In India, post-termination non-competes are often unenforceable. Non-solicitation clauses are more likely to be enforced." },
+                    { id: 28, title: "IP Ownership", objective: "To clarify who owns the intellectual property created.", preset: `(a) **Work Product:** All intellectual property rights in any materials developed by the Service Provider specifically for the Client... shall be the sole and exclusive property of the Client...\n(b) **Pre-existing IP:** The Service Provider shall retain ownership of all of its pre-existing intellectual property...`, considerations: "Clearly distinguishing between new 'Work Product' and pre-existing IP is critical." },
+                    { id: 29, title: "Licensing of IP", objective: "To grant one party the right to use the other's IP.", preset: `The Client hereby grants to the Service Provider a limited, non-exclusive, royalty-free, non-transferable license... to use the Client's name, trademarks, and logos... solely for the purpose of performing the Services...`, considerations: "Specify the scope, duration, and exclusivity of the license." },
+                    { id: 30, title: "Return of Confidential Info", objective: "To ensure confidential material is returned/destroyed upon termination.", preset: `Upon termination... the Receiving Party shall promptly: (i) return... all documents and materials... containing... Confidential Information; or (ii) destroy all such materials and provide a written certification...`, considerations: "The exception for archival and backup copies is a practical necessity." }
+                ]
+            },
+            {
+                category: "Part V: Termination & Dispute Resolution",
+                color: "#FFA600",
+                clauses: [
+                    { id: 31, title: "Termination", objective: "To define the conditions under which the agreement can be ended.", preset: `(a) **Termination for Convenience:** Either Party may terminate... for any reason by providing... sixty (60) days’... notice.\n(b) **Termination for Cause:** Either Party may terminate... with immediate effect... if the other Party: (i) commits a material breach... and fails to cure such breach within thirty (30) days...`, considerations: "'Material breach' should ideally be defined." },
+                    { id: 32, title: "Consequences of Termination", objective: "To specify the obligations that arise immediately upon termination.", preset: `(a) **Cessation of Services:** Upon termination... the Service Provider shall immediately cease all work...\n(c) **Transition Assistance:** ...the Service Provider shall... provide reasonable transition assistance...`, considerations: "The transition assistance clause is crucial for business continuity." },
+                    { id: 33, title: "Dispute Resolution", objective: "To establish the process for resolving disagreements.", preset: `(a) **Negotiation:** ...the Parties shall first attempt to resolve it amicably by negotiation...\n(b) **Arbitration:** If the Dispute is not resolved within thirty (30) days, it shall be... resolved by arbitration in accordance with the Arbitration and Conciliation Act, 1996...`, considerations: "Naming a specific institution to appoint an arbitrator in case of deadlock is vital." },
+                    { id: 34, title: "Governing Law & Jurisdiction", objective: "To specify which laws and courts will apply.", preset: `(a) **Governing Law:** This Agreement shall be governed by... the laws of the Republic of India...\n(b) **Jurisdiction:** ...the Parties irrevocably agree that the competent courts located in [New Delhi, India] shall have exclusive jurisdiction...`, considerations: "The choice of jurisdiction is a strategic decision." }
+                ]
+            },
+            {
+                category: "Part VI: Contract-Specific Clauses",
+                color: "#003F5C",
+                clauses: [
+                    { id: 35, title: "Exclusivity", objective: "To create an exclusive relationship.", preset: `During the Term... the Client agrees not to engage any other person or entity to provide services that are the same as or substantially similar to the Services...`, considerations: "Must be drafted carefully to be enforceable and not be an unreasonable restraint of trade." },
+                    { id: 36, title: "Right of First Refusal (ROFR)", objective: "To give an existing party the right to enter a transaction before a third party.", preset: `If any Shareholder... receives a bona fide... offer from a third party to purchase its shares... the Selling Shareholder must deliver a written notice... to the other Shareholders... The Continuing Shareholders shall have... thirty (30) days... to elect... to purchase...`, considerations: "The clause should detail the entire process, notice periods, and timelines." },
+                    { id: 37, title: "Service Level Agreement (SLA)", objective: "To define measurable performance metrics.", preset: `(a) ...the Service Provider... will perform the Services in accordance with the... metrics... detailed in **Schedule C**...\n(b) **Service Credits:** In the event the Service Provider fails to meet a service level metric, the service credits... shall be the Client's sole and exclusive remedy...`, considerations: "The 'Chronic Failure' provision for repeated failures is a crucial right." },
+                    { id: 38, title: "Probation Period", objective: "To set an initial trial period for a new employee.", preset: `The Employee's employment is subject to a probation period of six (6) months... During the probation period... employment may be terminated... by giving fourteen (14) days’ notice...`, considerations: "Clearly state terms for confirmation and the notice period during probation." },
+                    { id: 39, title: "Tag-along / Drag-along", objective: "To protect minority and majority shareholder rights during a sale.", preset: `(a) **Tag-Along Right:** If any shareholder... proposes to sell... the other shareholders... shall have the right... to participate in such sale...\n(b) **Drag-Along Right:** If shareholder(s) holding more than [75%]... propose to sell... they shall have the right to require all other shareholders... to sell...`, considerations: "Complex clauses requiring careful definition of triggering thresholds." },
+                    { id: 40, title: "Rent Escalation", objective: "To provide for an increase in rent over the lease term.", preset: `The monthly rent... shall be increased annually by [Percentage]% over the last paid rent. Alternatively, the rent shall increase... based on... the Consumer Price Index (CPI)...`, considerations: "Linking escalation to an index like CPI provides an objective measure." }
+                ]
+            },
+            {
+                category: "Part VII: Boilerplate Clauses",
+                color: "#58508D",
+                clauses: [
+                    { id: 41, title: "Entire Agreement", objective: "To confirm that this document is the whole and only agreement.", preset: `This Agreement, including all its Schedules and Annexures, constitutes the entire agreement... It supersedes all prior... agreements, negotiations, representations... whether oral or written.`, considerations: "The 'no reliance' sentence strengthens the clause." },
+                    { id: 42, title: "Amendments", objective: "To specify how the agreement can be changed.", preset: `No amendment, modification... shall be effective unless it is in writing and duly signed by the authorized representatives of both Parties.`, considerations: "Prevents informal changes. Explicitly excluding email amendment is prudent." },
+                    { id: 43, title: "Severability", objective: "To keep the agreement valid if one part is found to be unenforceable.", preset: `If any provision... is held... to be invalid... such provision shall be severed from this Agreement, and the remainder... shall continue in full force and effect.`, considerations: "An obligation to negotiate a replacement clause is viewed favourably by courts." },
+                    { id: 44, title: "Waiver", objective: "To ensure failure to enforce a right does not mean that right is given up.", preset: `No failure or delay by a Party to exercise any right... shall constitute a waiver of that... right... A waiver... is only effective if given in writing...`, considerations: "Protects parties from inadvertently losing contractual rights through inaction." },
+                    { id: 45, title: "Notices", objective: "To establish the official method for sending communications.", preset: `Any notice... shall be in writing and shall be delivered by hand, sent by pre-paid registered post with acknowledgement due, or by email to the addresses specified below...`, considerations: "\"Registered Post with Acknowledgment Due\" provides strong proof of delivery in India." },
+                    { id: 46, title: "Counterparts", objective: "To allow the agreement to be signed in separate copies.", preset: `This Agreement may be executed in any number of counterparts... The exchange of a fully executed Agreement... by electronic transmission in PDF... including... electronic signatures valid under the Information Technology Act, 2000, shall be sufficient to bind the Parties.`, considerations: "Essential for modern transactions." },
+                    { id: 47, title: "Survival", objective: "To specify which clauses remain in effect after termination.", preset: `Notwithstanding the termination... the clauses relating to Definitions... Confidentiality, Data Protection, IP Ownership, Warranties, Indemnity... shall remain in full force and effect.`, considerations: "List all obligations that should logically continue post-termination." },
+                    { id: 48, title: "Costs and Expenses", objective: "To clarify responsibility for costs related to the agreement's creation.", preset: `...each Party shall be responsible for its own costs and expenses... (b) **Stamp Duty:** Any and all stamp duty... shall be borne exclusively by [Party A/Party B].`, considerations: "Stamp duty is critical in India; an improperly stamped document can be inadmissible as evidence." },
+                    { id: 49, title: "Further Assurances", objective: "To oblige parties to take any additional actions necessary to fulfill the agreement.", preset: `...each Party shall, at the reasonable request of the other... execute... such additional documents and take such further actions as may be reasonably necessary to carry out... the terms... of this Agreement.`, considerations: "A useful 'catch-all' clause for unforeseen administrative needs." },
+                    { id: 50, title: "Cumulative Remedies", objective: "To clarify that contractual remedies are in addition to legal remedies.", preset: `Except where a remedy is expressly stated... to be "sole and exclusive", the rights and remedies provided under this Agreement are cumulative and are in addition to... any rights or remedies provided by Applicable Law...`, considerations: "Prevents a party from being forced to choose only one remedy." }
+                ]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartCtx = document.getElementById('clauseDistributionChart').getContext('2d');
+            const accordionContainer = document.getElementById('accordion-container');
+            
+            const labels = clauseLibrary.map(c => c.category);
+            const data = clauseLibrary.map(c => c.clauses.length);
+            const colors = ['#003F5C', '#58508D', '#BC5090', '#FF6361', '#FFA600', '#003F5C', '#58508D'];
+
+            new Chart(chartCtx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '# of Clauses',
+                        data: data,
+                        backgroundColor: colors,
+                        borderColor: colors.map(c => c + 'B3'),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { beginAtZero: true, grid: { display: false }, ticks: { precision: 0 } },
+                        y: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Number of Clauses per Category' },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            clauseLibrary.forEach((category, index) => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'card';
+
+                const categoryHeader = document.createElement('button');
+                categoryHeader.className = 'w-full p-4 text-left font-bold text-lg flex justify-between items-center';
+                categoryHeader.innerHTML = `
+                    <span>${category.category}</span>
+                    <span class="transform transition-transform duration-300">▼</span>
+                `;
+                categoryHeader.style.backgroundColor = category.color + '20';
+                categoryHeader.style.color = category.color;
+
+                const categoryContent = document.createElement('div');
+                categoryContent.className = 'accordion-content';
+
+                const contentWrapper = document.createElement('div');
+                contentWrapper.className = 'p-4 border-t';
+                contentWrapper.style.borderColor = category.color + '30';
+                
+                const clausesList = document.createElement('div');
+                clausesList.className = 'space-y-4';
+
+                category.clauses.forEach(clause => {
+                    const clauseDiv = document.createElement('div');
+                    clauseDiv.innerHTML = `
+                        <h4 class="font-semibold text-md text-slate-800">${clause.id}. ${clause.title}</h4>
+                        <div class="mt-2 pl-4 border-l-2" style="border-color: ${category.color}80;">
+                            <p class="text-sm text-slate-600 mb-2"><strong>Objective:</strong> ${clause.objective}</p>
+                            <details class="text-sm">
+                                <summary class="cursor-pointer font-medium text-slate-700 hover:text-black">View Preset & Considerations</summary>
+                                <div class="mt-2 space-y-3">
+                                    <pre class="clause-preset p-3 rounded-md text-xs overflow-x-auto"><code>${clause.preset}</code></pre>
+                                    <p class="text-slate-600 italic"><strong>Considerations:</strong> ${clause.considerations}</p>
+                                </div>
+                            </details>
+                        </div>
+                    `;
+                    clausesList.appendChild(clauseDiv);
+                });
+
+                contentWrapper.appendChild(clausesList);
+                categoryContent.appendChild(contentWrapper);
+                categoryCard.appendChild(categoryHeader);
+                categoryCard.appendChild(categoryContent);
+                accordionContainer.appendChild(categoryCard);
+
+                categoryHeader.addEventListener('click', () => {
+                    const icon = categoryHeader.querySelector('span:last-child');
+                    if (categoryContent.style.maxHeight) {
+                        categoryContent.style.maxHeight = null;
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        categoryContent.style.maxHeight = categoryContent.scrollHeight + "px";
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
